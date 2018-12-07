@@ -40,6 +40,7 @@ namespace ZipImagesFunction
 
         }
 
+        // Download Imgages in memory
         private static async Task<byte[]> DownloadImageFromBlobAsync(string imageNameString)
         {
         
@@ -52,6 +53,7 @@ namespace ZipImagesFunction
 
         }
 
+        // Create Zip
         private static async Task UploadImageToBlobAsync(byte[] uploadBytesArray)
         {
 

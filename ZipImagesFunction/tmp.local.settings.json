@@ -1,0 +1,12 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "<>",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+        "BIG_IMAGE_BLOB_NAME": "<>",
+        "ZIP_IMAGE_BLOB_NAME": "<>",
+        "ZIP_IMAGE_PREFIX": "<>",
+        "ZIP_WORKFLOW_URL": "<>"
+
+    }
+}

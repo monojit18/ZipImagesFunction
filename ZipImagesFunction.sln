@@ -3,15 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipImagesFunction", "ZipImagesFunction\ZipImagesFunction.csproj", "{E76FF78B-E51F-4B82-8AFE-BB2610D278B6}"
 EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "ZipImagesFunction-Setup", "ZipImagesFunction-Setup\ZipImagesFunction-Setup.mdproj", "{198037E6-E09A-4717-AB13-4A90D9EA9628}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Default|Any CPU = Default|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E76FF78B-E51F-4B82-8AFE-BB2610D278B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E76FF78B-E51F-4B82-8AFE-BB2610D278B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E76FF78B-E51F-4B82-8AFE-BB2610D278B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E76FF78B-E51F-4B82-8AFE-BB2610D278B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E76FF78B-E51F-4B82-8AFE-BB2610D278B6}.Default|Any CPU.ActiveCfg = Debug|Any CPU
+		{E76FF78B-E51F-4B82-8AFE-BB2610D278B6}.Default|Any CPU.Build.0 = Debug|Any CPU
+		{198037E6-E09A-4717-AB13-4A90D9EA9628}.Debug|Any CPU.ActiveCfg = Default|Any CPU
+		{198037E6-E09A-4717-AB13-4A90D9EA9628}.Debug|Any CPU.Build.0 = Default|Any CPU
+		{198037E6-E09A-4717-AB13-4A90D9EA9628}.Release|Any CPU.ActiveCfg = Default|Any CPU
+		{198037E6-E09A-4717-AB13-4A90D9EA9628}.Release|Any CPU.Build.0 = Default|Any CPU
+		{198037E6-E09A-4717-AB13-4A90D9EA9628}.Default|Any CPU.ActiveCfg = Default|Any CPU
+		{198037E6-E09A-4717-AB13-4A90D9EA9628}.Default|Any CPU.Build.0 = Default|Any CPU
 	EndGlobalSection
 EndGlobal

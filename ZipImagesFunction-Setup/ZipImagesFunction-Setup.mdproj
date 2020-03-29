@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>GenericProject</ItemType>
+    <ProjectGuid>{198037E6-E09A-4717-AB13-4A90D9EA9628}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Default|AnyCPU' ">
+    <OutputPath>.\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Templates\zipimagesapp-deploy.json" />
+    <None Include="Templates\keyvault-deploy.json" />
+    <None Include="Templates\keyvault-deploy.ps1" />
+    <None Include="Templates\zipimagesapp-deploy.ps1" />
+    <None Include="Templates\processzip-logicapp-deploy.json" />
+    <None Include="Templates\processzip-logicapp-deploy.ps1" />
+    <None Include="Setup\zipimagesapp-setup.ps1" />
+  </ItemGroup>
+</Project>

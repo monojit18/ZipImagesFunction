@@ -1,14 +1,11 @@
-
 using System;
 using System.Net.Http;
 using System.IO;
 using System.IO.Compression;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using Microsoft.WindowsAzure.Storage;
@@ -39,12 +36,11 @@ namespace ZipImagesFunction
             return blobReference;
 
         }
-
-        // Download Imgages in memory
+        
         private static async Task<byte[]> DownloadImageFromBlobAsync(string imageNameString)
         {
         
-            var containerNameString = Environment.GetEnvironmentVariable("EASY_BLOB_NAME");
+            var containerNameString = Environment.GetEnvironmentVariable("BIG_IMAGE_BLOB_NAME");
             var blobReference = GetBlobReference(containerNameString, imageNameString);
 
             var ms = new MemoryStream();
@@ -53,12 +49,15 @@ namespace ZipImagesFunction
 
         }
 
-        // Create Zip
         private static async Task UploadImageToBlobAsync(byte[] uploadBytesArray)
         {
 
             var containerNameString = Environment.GetEnvironmentVariable("ZIP_IMAGE_BLOB_NAME");
-            var blobReference = GetBlobReference(containerNameString, "test.zip");
+            var timeString = DateTime.Now.Ticks.ToString();            
+            var zipImagePrefix = Environment.GetEnvironmentVariable("ZIP_IMAGE_PREFIX");
+            var uploadFileNameString = $"{zipImagePrefix}{timeString}.zip";
+
+            var blobReference = GetBlobReference(containerNameString, uploadFileNameString);
 
             await blobReference.UploadFromByteArrayAsync(uploadBytesArray, 0,
                                                             uploadBytesArray.Length);

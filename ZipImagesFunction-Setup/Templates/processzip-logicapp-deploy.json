@@ -10,11 +10,9 @@
         }        
     },
     "variables": {
-
         "storageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
         "storageConnectionName": "azureblob-conn",
         "office365ConnectionName": "office365-conn"
-
     },
     "resources": [
         {

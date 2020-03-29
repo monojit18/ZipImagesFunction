@@ -2,12 +2,10 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "logicAppName": {
-            "defaultValue": "process-zipimage-la",
+        "logicAppName": {            
             "type": "String"
         },
-        "storageAccountName": {
-            "defaultValue": "srvlswkstorage",
+        "storageAccountName": {            
             "type": "string"
         }        
     },

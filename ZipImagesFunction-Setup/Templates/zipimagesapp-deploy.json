@@ -3,8 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appName": {
-            "type": "string",
-            "defaultValue": "ZipImagesApp"
+            "type": "string"
         },
       "skuName": {
         "type": "string",
@@ -15,13 +14,27 @@
         "defaultValue": "ElasticPremium"
       },
       "storageAccountName": {
-        "type": "string",
-        "defaultValue": "srvlswkstorage"        
+        "type": "string"      
       },
       "storageAccountType": {
         "type": "string",
         "defaultValue": "Standard_RAGRS",
         "allowedValues": ["Standard_LRS", "Standard_GRS", "Standard_RAGRS"]
+      },
+      "logicAppURL": {
+        "type": "string"        
+      },
+      "bigImageBlobName": {
+        "type": "string",
+        "defaultValue": "bigimageblob"
+      },
+      "zipImageBlobName": {
+        "type": "string",
+        "defaultValue": "zipimageblob"
+      },
+      "zipImagePrefix": {
+        "type": "string",
+        "defaultValue": "zip-"
       },
       "location": {
         "type": "string",
@@ -105,7 +118,23 @@
               {
                 "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                 "value": "[reference(resourceId('microsoft.insights/components/', variables('applicationInsightsName')), '2015-05-01').InstrumentationKey]"
-              }              
+              },
+              {
+                "name": "BIG_IMAGE_BLOB_NAME",
+                "value": "[parameters('bigImageBlobName')]"
+              },
+              {
+                "name": "ZIP_IMAGE_BLOB_NAME",
+                "value": "[parameters('zipImageBlobName')]"
+              },
+              {
+                "name": "ZIP_IMAGE_PREFIX",
+                "value": "[parameters('zipImagePrefix')]"
+              },
+              {
+                "name": "ZIP_WORKFLOW_URL",
+                "value": "[parameters('logicAppURL')]"
+              }
             ]
           }
         }        

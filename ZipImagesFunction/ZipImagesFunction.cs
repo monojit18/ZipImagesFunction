@@ -12,7 +12,6 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 
-
 namespace ZipImagesFunction
 {
     public static class ZipImagesFunction

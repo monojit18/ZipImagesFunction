@@ -50,8 +50,8 @@
             "name": "[parameters('logicAppName')]",
             "location": "eastus",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/connections', 'azureblob-conn')]",
-                "[resourceId('Microsoft.Web/connections', 'office365-conn')]"
+                "[resourceId('Microsoft.Web/connections', variables('storageConnectionName'))]",
+                "[resourceId('Microsoft.Web/connections', variables('office365ConnectionName'))]"
             ],
             "properties": {
                 "state": "Enabled",
@@ -136,12 +136,12 @@
                         "value": {
                             "azureblob": {
                                 "connectionId": "[resourceId('Microsoft.Web/connections', variables('storageConnectionName'))]",
-                                "connectionName": "azureblob-conn",
+                                "connectionName": "[variables('storageConnectionName')]",
                                 "id": "[subscriptionResourceId('Microsoft.Web/locations/managedApis', resourceGroup().location, 'azureblob')]"
                             },
                             "office365": {
                                 "connectionId": "[resourceId('Microsoft.Web/connections', variables('office365ConnectionName'))]",
-                                "connectionName": "office365-conn",
+                                "connectionName": "[variables('office365ConnectionName')]",
                                 "id": "[subscriptionResourceId('Microsoft.Web/locations/managedApis', resourceGroup().location, 'office365')]"
                             }
                         }

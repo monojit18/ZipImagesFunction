@@ -1,12 +1,12 @@
 {
     "IsEncrypted": false,
     "Values": {
-        "AzureWebJobsStorage": "<>",
+        "AzureWebJobsStorage": "<storage_account_key>",
         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-        "BIG_IMAGE_BLOB_NAME": "<>",
-        "ZIP_IMAGE_BLOB_NAME": "<>",
-        "ZIP_IMAGE_PREFIX": "<>",
-        "ZIP_WORKFLOW_URL": "<>"
+        "BIG_IMAGE_BLOB_NAME": "<BIG_IMAGE_BLOB_NAME>",
+        "ZIP_IMAGE_BLOB_NAME": "<ZIP_IMAGE_BLOB_NAME>",
+        "ZIP_IMAGE_PREFIX": "<ZIP_IMAGE_PREFIX>",
+        "ZIP_WORKFLOW_URL": "<ZIP_WORKFLOW_URL>"
 
     }
 }

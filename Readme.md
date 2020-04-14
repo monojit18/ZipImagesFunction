@@ -119,7 +119,9 @@ PowerShell script to execute the above ARM template
 
 #### zipimagesapp-deploy.json
 
-ARM template for creating/updating Function App and related resources
+ARM template for creating/updating Function App and related resources.
+
+Function should be in ***Consumption Plan (Y)*** as the use case would have sporadic image uploads rather than continuous usage (*in which case we should have gone for **Premium Plan - EP***)
 
 #### zipimagesapp-deploy.ps1
 

@@ -32,30 +32,11 @@ Write-Host $logicAppURL
 
 # Get EventHub Values
 $outputValues = $logicAppOutput[1].Outputs.Values
-
-foreach ($item in $outputKeys)
-{
-      $keysList.Add($item)
-}
-
-$index = 0;
+$logicAppURL = ""
 foreach ($item in $outputValues)
 {
-      
-      $logicAppURLKey = $keysList[$index]
       $logicAppURL = $item.Value
-
-      $logicAppURLObject = ConvertTo-SecureString `
-      -String $logicAppURL -AsPlainText -Force
-
-      Set-AzKeyVaultSecret -VaultName $keyVaultName -Name $logicAppURLKey `
-      -SecretValue $logicAppURLObject
-
-      ++$index
 }
-
-# Clean up KeysList
-$keysList.Clear();
 
 #  Function deploy
 $logicAppURLCommand = " -logicAppURL '" + $logicAppURL + "'"

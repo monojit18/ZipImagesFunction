@@ -33,7 +33,7 @@ namespace ZipImagesFunction
 
             var zipWorkflowURL = Environment.GetEnvironmentVariable("ZIP_WORKFLOW_URL");
             var zms = JsonConvert.SerializeObject(zm);
-            var contnet = new StringContent(zms, Encoding.UTF8, "application/json");
+            var contnet = new StringContent(zms, Encoding.UTF8, "application/json"); // some comment
             var response = await cl.PostAsync(zipWorkflowURL, contnet);
             log.LogDebug(response.Content.ToString());
 

@@ -7,11 +7,11 @@
         },
       "skuName": {
         "type": "string",
-        "defaultValue": "EP1"
+        "defaultValue": "Y1"
       },
       "skuTier": {
         "type": "string",
-        "defaultValue": "ElasticPremium"
+        "defaultValue": "Consumption"
       },
       "storageAccountName": {
         "type": "string"      

@@ -52,7 +52,7 @@ namespace ZipImagesFunction
         {
 
             var containerNameString = Environment.GetEnvironmentVariable("ZIP_IMAGE_BLOB_NAME");
-            var timeString = DateTime.Now.Ticks.ToString();            
+            var timeString = DateTime.Now.Ticks.ToString();
             var zipImagePrefix = Environment.GetEnvironmentVariable("ZIP_IMAGE_PREFIX");
             var uploadFileNameString = $"{zipImagePrefix}{timeString}.zip";
 

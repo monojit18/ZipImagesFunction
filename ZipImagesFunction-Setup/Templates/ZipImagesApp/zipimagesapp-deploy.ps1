@@ -6,11 +6,11 @@ param([Parameter(Mandatory=$false)] [string] $rg,
       [Parameter(Mandatory=$false)] [string] $logicAppURL)
 
 Test-AzResourceGroupDeployment -ResourceGroupName $rg `
--TemplateFile "$fpath/ZipImageaApp/$deployFileName.json" `
+-TemplateFile "$fpath/ZipImagesApp/$deployFileName.json" `
 -appName $appName -logicAppURL $logicAppURL `
 -storageAccountName $storageAccountName
 
 New-AzResourceGroupDeployment -ResourceGroupName $rg `
--TemplateFile "$fpath/ZipImageaApp/$deployFileName.json" `
+-TemplateFile "$fpath/ZipImagesApp/$deployFileName.json" `
 -appName $appName -logicAppURL $logicAppURL `
 -storageAccountName $storageAccountName

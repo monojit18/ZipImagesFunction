@@ -25,7 +25,7 @@ $keyvaultDeployCommand = "/KeyVault/$kvTemplateFileName.ps1 -rg $resourceGroup -
 $networkNames = "-vnetName $vnetName -vnetPrefix $vnetPrefix -subnetName $subnetName -subNetPrefix $subNetPrefix"
 $networkDeployCommand = "/Network/$networkTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -deployFileName $networkTemplateFileName $networkNames"
 
-$logicAppDeployCommand = "/LogicApp/$laTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -logicAppName $logicAppName -storageConnectionName $storageConnectionName -o365ConnectionName $o365ConnectionName -storageAccountName $storageAccountName"
+$logicAppDeployCommand = "/LogicApp/$laTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -deployFileName $laTemplateFileName -logicAppName $logicAppName -storageConnectionName $storageConnectionName -o365ConnectionName $o365ConnectionName -storageAccountName $storageAccountName"
 
 $functionDeps = "-appName $appName -storageAccountName $storageAccountName"
 $functionDeployCommand = "/ZipImagesApp/$functionTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -deployFileName $functionTemplateFileName $functionDeps"

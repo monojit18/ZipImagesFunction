@@ -1,0 +1,64 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "vnetName": {
+        "type": "string"
+      },
+      "vnetPrefix": {
+        "type": "string"
+      },      
+      "subnetName": {
+        "type": "string"
+      },
+      "subnetPrefix": {
+        "type": "string"     
+      },      
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]"
+      }
+    },
+    "variables": {},
+    "resources": [
+      {
+        "apiVersion": "2018-10-01",
+        "type": "Microsoft.Network/virtualNetworks",
+        "name": "[parameters('vnetName')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "addressSpace": {
+            "addressPrefixes": [
+              "[parameters('vnetPrefix')]"
+            ]
+          }
+        },
+        "resources": [
+          {
+            "apiVersion": "2018-10-01",
+            "type": "subnets",
+            "location": "[parameters('location')]",
+            "name": "[parameters('subnetName')]",
+            "dependsOn": [
+              "[parameters('vnetName')]"
+            ],
+            "properties": {
+              "addressPrefix": "[parameters('subnetPrefix')]",
+              "delegations": [
+                {
+                    "name": "delegation",
+                    "properties": {
+                        "serviceName": "Microsoft.Web/serverFarms",
+                        "actions": [
+                            "Microsoft.Network/virtualNetworks/subnets/action"
+                        ]
+                    }
+                }
+              ]
+            }
+          }          
+        ]
+      }
+    ]
+  }
+  

@@ -7,18 +7,18 @@
         },
       "skuName": {
         "type": "string",
-        "defaultValue": "Y1"
+        "defaultValue": "EP2"
       },
       "skuTier": {
         "type": "string",
-        "defaultValue": "Consumption"
+        "defaultValue": "ElasticPremium"
       },
       "storageAccountName": {
         "type": "string"      
       },
       "storageAccountType": {
         "type": "string",
-        "defaultValue": "Standard_RAGRS",
+        "defaultValue": "Standard_LRS",
         "allowedValues": ["Standard_LRS", "Standard_GRS", "Standard_RAGRS"]
       },
       "logicAppURL": {
@@ -47,7 +47,7 @@
       },
       "environments": {
         "defaultValue": [
-          "Dev"          
+          "Dev", "QA"   
         ],
         "type": "array",
         "maxLength": 4
@@ -86,7 +86,7 @@
         }
       },
       {
-        "apiVersion": "2015-08-01",
+        "apiVersion": "2018-11-01",
         "type": "Microsoft.Web/sites",
         "name": "[variables('functionAppName')]",
         "location": "[parameters('location')]",
@@ -101,11 +101,11 @@
             "appSettings": [
               {
                 "name": "AzureWebJobsDashboard",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2019-06-01').keys[0].value)]"
               },
               {
                 "name": "AzureWebJobsStorage",
-                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2015-05-01-preview').key1)]"
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountId'),'2019-06-01').keys[0].value)]"
               },
               {
                 "name": "FUNCTIONS_EXTENSION_VERSION",

@@ -11,6 +11,7 @@ param([Parameter(Mandatory=$false)] [string] $resourceGroup = "serverless-worksh
       [Parameter(Mandatory=$true)]  [string] $functionTemplateFileName = "zipimagesapp-deploy",
       [Parameter(Mandatory=$true)]  [string] $appName = "ZipImagesApp",
       [Parameter(Mandatory=$false)] [string] $logicAppName = "<logicApp_Name>",
+      [Parameter(Mandatory=$false)] [string] $storageConnectionName = "<storage_Connection_Name>",
       [Parameter(Mandatory=$false)] [string] $o365ConnectionName = "<Office365_Connection_Name>",
       [Parameter(Mandatory=$true)]  [string] $storageAccountName = "<storageAccount_Name>",
       [Parameter(Mandatory=$true)]  [string] $objectId = "<object_Id>",
@@ -24,7 +25,7 @@ $keyvaultDeployCommand = "/KeyVault/$kvTemplateFileName.ps1 -rg $resourceGroup -
 $networkNames = "-vnetName $vnetName -vnetPrefix $vnetPrefix -subnetName $subnetName -subNetPrefix $subNetPrefix"
 $networkDeployCommand = "/Network/$networkTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -deployFileName $networkTemplateFileName $networkNames"
 
-$logicAppDeployCommand = "/LogicApp/$laTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -logicAppName $logicAppName -o365ConnectionName $o365ConnectionName -storageAccountName $storageAccountName"
+$logicAppDeployCommand = "/LogicApp/$laTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -logicAppName $logicAppName -storageConnectionName $storageConnectionName -o365ConnectionName $o365ConnectionName -storageAccountName $storageAccountName"
 
 $functionDeps = "-appName $appName -storageAccountName $storageAccountName"
 $functionDeployCommand = "/ZipImagesApp/$functionTemplateFileName.ps1 -rg $resourceGroup -fpath $templatesFolderPath -deployFileName $functionTemplateFileName $functionDeps"

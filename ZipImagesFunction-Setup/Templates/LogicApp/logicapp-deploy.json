@@ -2,19 +2,22 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "logicAppName": {            
+        "logicAppName": {
             "type": "String"
         },
-        "storageAccountName": {            
+        "storageAccountName": {
             "type": "string"
         },
-        "o365ConnectionName": {            
+        "storageConnectionName": {
             "type": "string"
-        }  
+        },
+        "o365ConnectionName": {
+            "type": "string"
+        }
     },
     "variables": {
         "storageAccountId": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-        "storageConnectionName": "azureblob-conn",
+        "storageConnectionName": "[parameters('storageConnectionName')]",
         "office365ConnectionName": "[parameters('o365ConnectionName')]"
     },
     "resources": [

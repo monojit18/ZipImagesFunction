@@ -1,5 +1,5 @@
-param([Parameter(Mandatory=$false)] [string] $resourceGroup = "serverless-workshop-rg",
-      [Parameter(Mandatory=$true)] [string] $location = "eastus",
+param([Parameter(Mandatory=$true)]  [string] $resourceGroup = "serverless-workshop-rg",
+      [Parameter(Mandatory=$true)]  [string] $location = "eastus",
       [Parameter(Mandatory=$true)]  [string] $keyVaultName = "srvlswkshkv",      
       [Parameter(Mandatory=$true)]  [string] $vnetName = "srvless-workshop-vnet",
       [Parameter(Mandatory=$true)]  [string] $vnetPrefix = "190.0.0.0/20",        
@@ -10,13 +10,13 @@ param([Parameter(Mandatory=$false)] [string] $resourceGroup = "serverless-worksh
       [Parameter(Mandatory=$true)]  [string] $laTemplateFileName = "logicapp-deploy",
       [Parameter(Mandatory=$true)]  [string] $functionTemplateFileName = "zipimagesapp-deploy",
       [Parameter(Mandatory=$true)]  [string] $appName = "ZipImagesApp",
-      [Parameter(Mandatory=$false)] [string] $logicAppName = "<logicApp_Name>",
-      [Parameter(Mandatory=$false)] [string] $storageConnectionName = "<storage_Connection_Name>",
-      [Parameter(Mandatory=$false)] [string] $o365ConnectionName = "<Office365_Connection_Name>",
+      [Parameter(Mandatory=$true)]  [string] $logicAppName = "<logicApp_Name>",
+      [Parameter(Mandatory=$true)]  [string] $storageConnectionName = "<storage_Connection_Name>",
+      [Parameter(Mandatory=$true)]  [string] $o365ConnectionName = "<Office365_Connection_Name>",
       [Parameter(Mandatory=$true)]  [string] $storageAccountName = "<storageAccount_Name>",
       [Parameter(Mandatory=$true)]  [string] $objectId = "<object_Id>",
       [Parameter(Mandatory=$true)]  [string] $subscriptionId = "<subscription_id>",
-      [Parameter(Mandatory=$false)] [string] $baseFolderPath = "<folder_path>")
+      [Parameter(Mandatory=$true)]  [string] $baseFolderPath = "<folder_path>")
 
 $templatesFolderPath = $baseFolderPath + "/Templates"
 

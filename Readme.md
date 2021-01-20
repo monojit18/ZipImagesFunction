@@ -80,6 +80,57 @@ public static async Task Run([BlobTrigger("zipimageblob/{name}")]
 
 Blob trigger function which gets blob content as *byte[]* as input binding. Function then calls an Http triggered Logic App passing appropriate value for *ZIP_WORKFLOW_URL*. We would see shortly how to get that value using KeyVault task of ADO
 
+### Helper Functions  
+
+```C#
+private static CloudBlockBlob GetBlobReference(string containerNameString, string imageNameString)
+{
+
+  CloudBlobClient cloudBlobClient = null;
+  CloudStorageAccount cloudStorageAccount = null;
+
+  var connectionString = Environment.GetEnvironmentVariable("AzureWebJobsStorage");
+  var couldParse = CloudStorageAccount.TryParse(connectionString, out cloudStorageAccount);
+  if (couldParse == false)
+    return null;
+
+  cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
+  var blobContainerReference = cloudBlobClient.GetContainerReference(containerNameString);
+  var blobReference = blobContainerReference.GetBlockBlobReference(imageNameString);
+  return blobReference;
+
+}
+
+private static async Task<byte[]> DownloadImageFromBlobAsync(string imageNameString)
+{
+
+  var containerNameString = Environment.GetEnvironmentVariable("BIG_IMAGE_BLOB_NAME");
+  var blobReference = GetBlobReference(containerNameString, imageNameString);
+
+  var ms = new MemoryStream();
+  await blobReference.DownloadToStreamAsync(ms);
+  return ms.ToArray();
+
+}
+
+private static async Task UploadImageToBlobAsync(byte[] uploadBytesArray)
+{
+
+  var containerNameString = Environment.GetEnvironmentVariable("ZIP_IMAGE_BLOB_NAME");
+  var timeString = DateTime.Now.Ticks.ToString();
+  var zipImagePrefix = Environment.GetEnvironmentVariable("ZIP_IMAGE_PREFIX");
+  var uploadFileNameString = $"{zipImagePrefix}{timeString}.zip";
+
+  var blobReference = GetBlobReference(containerNameString, uploadFileNameString);
+
+  await blobReference.UploadFromByteArrayAsync(uploadBytesArray, 0,
+                                               uploadBytesArray.Length);
+
+}
+```
+
+
+
 ### tmp.local.settings.json
 
 ```JSON
